@@ -10,4 +10,4 @@ Route::get('/', function() {
     ];
 });
 
-Route::post("transfer", [TransactionController::class, "store"]);
+Route::post("/transfer", [TransactionController::class, "transfer"]);
