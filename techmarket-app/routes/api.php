@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Transaction;
 
 Route::get('/', function() {
     return [
@@ -11,3 +12,7 @@ Route::get('/', function() {
 });
 
 Route::post("/transfer", [TransactionController::class, "transfer"]);
+
+Route::get("/transactions", function(){
+    return Transaction::orderBy('amount', 'desc')->take(8)->get();
+});

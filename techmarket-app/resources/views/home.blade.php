@@ -15,23 +15,14 @@
     </header>
     
     <main class="main">
-        <section class="transactions">
-            @php
-                use App\Models\Transaction;
-                $transactions = Transaction::orderBy('amount', 'desc')->take(9)->get();
-            @endphp
-
-            @foreach ($transactions as $transaction)
-                <div class="transaction-card">
-                    <p><strong>Valor: </strong>R$ {{ number_format($transaction->amount, 2, ',', '.') }}</p>
-                    <p><strong>Data: </strong> {{ date('d/m/Y', strtotime($transaction->created_at)) }}</p>
-                </div>
-            @endforeach
-        </section>
+        <section id="transactions-js" class="transactions"></section>
     </main>
 
     <footer>
         <p>&copy; {{ date('Y') }} Techmarket. Todos os direitos reservados.</p>
     </footer>
+
+    @vite('resources/js/transactions.js')
+
 </body>
 </html>
