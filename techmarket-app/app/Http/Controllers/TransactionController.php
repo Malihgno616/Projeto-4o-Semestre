@@ -14,8 +14,8 @@ class TransactionController extends Controller
     {
         // Validação dos dados de entrada
         $validated = $request->validate([
-            'from_user_id' => 'required|exists:users,id',
-            'to_user_id'   => 'required|exists:users,id|different:from_user_id',
+            'from_account_id' => 'required|exists:users,id',
+            'to_account_id'   => 'required|exists:users,id|different:from_user_id',
             'amount'       => 'required|numeric|min:0.01',
         ]);
 
@@ -25,8 +25,8 @@ class TransactionController extends Controller
             // Executa tudo dentro de uma transação do banco
             DB::transaction(function () use ($validated, $amount, &$transactionCode, &$toAccountId) {
 
-                $fromUser = User::findOrFail($validated['from_user_id']);
-                $toUser   = User::findOrFail($validated['to_user_id']);
+                $fromUser = User::findOrFail($validated['from_account_id']);
+                $toUser   = User::findOrFail($validated['to_account_id']);
 
                 // Verifica se o usuário tem saldo suficiente
                 if ($fromUser->amount < $amount) {
@@ -42,12 +42,11 @@ class TransactionController extends Controller
 
                 // Cria a transação
                 $transfer = new Transaction();
-                $transfer->from_user_id = $fromUser->id;
-                $transfer->to_user_id   = $toUser->id;
+                $transfer->from_account_id = $fromUser->id;
+                $transfer->to_account_id   = $toUser->id;
                 $transfer->amount       = $amount;
                 $transactionCode        = $transfer->code = Str::uuid()->toString();
                 $toAccountId            = $toUser->id;
-                $transfer->status       = 'success';
                 $transfer->save();
             });
 

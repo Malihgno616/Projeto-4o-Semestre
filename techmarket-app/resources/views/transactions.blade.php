@@ -11,7 +11,7 @@
 <body>
     @include('components.header', 
     [
-        'greeting' => 'FastPay - Home', 
+        'greeting' => 'FastPay - Transações em destaque', 
         'title' => 'Gerencie suas transações de forma fácil e segura'
     ])
 
@@ -22,27 +22,24 @@
             <li><a href="/transfer">Faça sua transação</a></li>
         </ul>
     </nav>
+    
+    <div>
+        <h1>Transações em destaque</h1>
+    </div>
+
+    <div>
+        <button onclick="location.reload()">Clique aqui para atualizar</button>
+    </div>
 
     <main class="main">
-        <div>
-            <h1>Bem-vindos ao site FastPay</h1>
-            <p>Somos uma empresa fintech e trabalhamos com transações com maior <span style="text-transform: uppercase"><strong>segurança</strong></span> e <span style="text-transform: uppercase"><strong>simplicidade</strong></span>!</p>
-            <p>Caso não tenha uma conta para realizar transações, cadastre-se aqui abaixo preenchendo o formulário</p>
-        </div>
-        <div class="form">
-            @include('components.form', [
-                'name' => 'Nome Completo',
-                'cpf' => 'CPF',
-                'phone' => 'Telefone',
-                'birthdate' => 'Data de Nascimento',
-                'amount' => 'Valor Inicial'
-            ])
-        </div>
+        <section id="transactions-js" class="transactions"></section>
     </main>
 
     @include('components.footer', [
         'copyright' => 'Techmarket ' . date('Y') . '. Todos os direitos reservados.'
-    ]) 
-  
+    ])
+    
+    @vite('resources/js/transactions.js')
+
 </body>
 </html>

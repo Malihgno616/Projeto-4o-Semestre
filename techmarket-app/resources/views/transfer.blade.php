@@ -11,7 +11,7 @@
 <body>
     @include('components.header', 
     [
-        'greeting' => 'FastPay - Home', 
+        'greeting' => 'FastPay - Tranferência', 
         'title' => 'Gerencie suas transações de forma fácil e segura'
     ])
 
@@ -25,17 +25,14 @@
 
     <main class="main">
         <div>
-            <h1>Bem-vindos ao site FastPay</h1>
-            <p>Somos uma empresa fintech e trabalhamos com transações com maior <span style="text-transform: uppercase"><strong>segurança</strong></span> e <span style="text-transform: uppercase"><strong>simplicidade</strong></span>!</p>
-            <p>Caso não tenha uma conta para realizar transações, cadastre-se aqui abaixo preenchendo o formulário</p>
+            <h1>Realize a transferência</h1>
+            <p>Preencha os dados corretamente</p>
         </div>
         <div class="form">
-            @include('components.form', [
-                'name' => 'Nome Completo',
-                'cpf' => 'CPF',
-                'phone' => 'Telefone',
-                'birthdate' => 'Data de Nascimento',
-                'amount' => 'Valor Inicial'
+            @include('components.transfer-form', [
+                'fromCpf' => 'CPF de Origem',
+                'toCpf' => 'CPF de Destino',
+                'amount' => 'Valor a ser Transferido'
             ])
         </div>
     </main>

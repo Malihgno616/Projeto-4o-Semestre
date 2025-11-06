@@ -10,6 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+    text-align: center;
     font-size: 2em;
 }
 
@@ -18,7 +19,10 @@ h2 {
 
 }
 
-p {
+p { 
+    text-align: center;
+    margin: 10px;
+    font-size: 1.125em;
     line-height: 1.6;
 }
 
@@ -29,14 +33,33 @@ body {
     flex-direction: column;
 }
 
+div {
+    padding: 1em;
+    margin: 0 auto;
+
+}
+
+div button {
+    font-size: 1.25em;
+    text-align: center;
+    padding: 0.5em;
+    margin: 1em auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;    
+}
+
 .main {
     width: 100%;
-    flex: 1;
-    padding: 2em;
+    flex-direction: column;
+    padding: 1em;
     margin: auto;
     display: flex;
     justify-content: center;
-    overflow-y: auto;
+    align-items: center;
+
 }
 
 .header {
@@ -44,6 +67,44 @@ body {
     color: white;
     padding: 15px;
     text-align: center;
+}
+
+.nav-bar {
+    background-color: #333;
+    padding: 1em;
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.nav-bar a {
+    color: white;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.nav-bar a:hover {
+    color: black;
+    background-color: #ddd;
+    transition: all 0.3s ease;
+}
+
+.form {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 2em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
 }
 
 .transactions {
