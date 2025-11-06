@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('cpf')->unique();
+            $table->string('phone_number')->nullable();
+            $table->date('birthdate')->nullable();
             $table->decimal('amount', 15, 2)->default(0); // saldo do usuário
             $table->timestamps();
         });

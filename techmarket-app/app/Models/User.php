@@ -12,6 +12,9 @@ class User extends Model
 
     protected $fillable = [
         'name',
+        'cpf',
+        'phone_number',
+        'birthdate',
         'amount',
     ];
 }
