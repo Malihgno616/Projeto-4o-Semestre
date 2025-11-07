@@ -14,6 +14,7 @@ Route::get('/', function() {
 
 // Rotas para UserController
 Route::get("/users", [UserController::class, "allUsers"]);
+Route::get("/select-user/{id}", [UserController::class, "selectUser"]);
 Route::post("/create-user", [UserController::class, "createUser"]);
 Route::put("/update-amount", [UserController::class, "updateAmount"]);
 

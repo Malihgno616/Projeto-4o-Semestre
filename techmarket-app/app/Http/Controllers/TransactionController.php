@@ -15,7 +15,7 @@ class TransactionController extends Controller
         // Validação dos dados de entrada
         $validated = $request->validate([
             'from_account_id' => 'required|exists:users,id',
-            'to_account_id'   => 'required|exists:users,id|different:from_user_id',
+            'to_account_cpf'   => 'required|exists:users,cpf|different:from_account_id',
             'amount'       => 'required|numeric|min:0.01',
         ]);
 
@@ -26,11 +26,23 @@ class TransactionController extends Controller
             DB::transaction(function () use ($validated, $amount, &$transactionCode, &$toAccountId) {
 
                 $fromUser = User::findOrFail($validated['from_account_id']);
-                $toUser   = User::findOrFail($validated['to_account_id']);
-
+                
+                $cpf = preg_replace('/[^0-9]/', '', $validated['to_account_cpf']);
+                
+                // Buscar usuário destino pelo CPF normalizado
+                $toUser = User::where('cpf', $cpf)->first();
+                
                 // Verifica se o usuário tem saldo suficiente
                 if ($fromUser->amount < $amount) {
                     throw new \Exception('Saldo insuficiente para a transferência.');
+                }
+
+                if (!$toUser) {
+                    throw new \Exception('CPF do destinatário não encontrado.');
+                }
+
+                if ($fromUser->id === $toUser->id) {
+                    throw new \Exception('Não é permitido transferir para a própria conta.');
                 }
 
                 // Atualiza saldos

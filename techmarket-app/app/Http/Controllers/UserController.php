@@ -17,6 +17,21 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function selectUser(Request $request, $id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found'
+            ], 404);    
+        }
+
+        return response()->json([
+            'message' => 'User retrieved successfully',
+            'data' => $user
+        ], 200);
+    }
+
     public function createUser(Request $request)
     {
         $validatedData = $request->validate([
