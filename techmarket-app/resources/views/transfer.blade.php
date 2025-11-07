@@ -11,7 +11,7 @@
 <body>
     @include('components.header', 
     [
-        'greeting' => 'FastPay - Tranferência', 
+        'greeting' => 'Techmarket - Tranferência', 
         'title' => 'Gerencie suas transações de forma fácil e segura'
     ])
 

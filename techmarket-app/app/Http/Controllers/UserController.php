@@ -37,9 +37,9 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'cpf' => 'required|string|max:11|unique:users,cpf',
-            'phone_number' => 'nullable|string|max:20',
-            'date' => 'nullable|date',
-            'amount' => 'nullable|numeric|min:0',
+            'phone_number' => 'required|string|max:20',
+            'date' => 'required|date',
+            'amount' => 'required|numeric|min:0',
         ]);
 
         $user = User::create([

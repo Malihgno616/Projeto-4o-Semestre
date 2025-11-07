@@ -11,7 +11,7 @@
 <body>
     @include('components.header', 
     [
-        'greeting' => 'FastPay - Home', 
+        'greeting' => 'Techmarket - Home', 
         'title' => 'Gerencie suas transações de forma fácil e segura'
     ])
 
@@ -25,8 +25,8 @@
 
     <main class="main">
         <div>
-            <h1>Bem-vindos ao site FastPay</h1>
-            <p>Somos uma empresa fintech e trabalhamos com transações com maior <span style="text-transform: uppercase"><strong>segurança</strong></span> e <span style="text-transform: uppercase"><strong>simplicidade</strong></span>!</p>
+            <h1>Bem-vindos ao site Techmarket</h1>
+            <p>Somos uma empresa  aonde trabalhamos com transações com maior <span style="text-transform: uppercase"><strong>segurança</strong></span> e <span style="text-transform: uppercase"><strong>simplicidade</strong></span>!</p>
             <p>Caso não tenha uma conta para realizar transações, cadastre-se aqui abaixo preenchendo o formulário</p>
         </div>
         <div class="form">
@@ -38,11 +38,14 @@
                 'amount' => 'Valor Inicial'
             ])
         </div>
+        
     </main>
 
     @include('components.footer', [
         'copyright' => 'Techmarket ' . date('Y') . '. Todos os direitos reservados.'
     ]) 
-  
+    
+    @vite('resources/js/createUser.js')
+
 </body>
 </html>
