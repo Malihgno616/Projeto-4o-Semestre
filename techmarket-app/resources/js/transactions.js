@@ -7,13 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
             container.innerHTML = transactions
                 .map(
                     (t) => `
-                <div class="transaction-card">
-                    <p><strong>Valor: </strong>R$ ${Number(t.amount)
-                        .toFixed(2)
-                        .replace(".", ",")}</p>
-                    <p><strong>Data: </strong> ${new Date(
-                        t.created_at
-                    ).toLocaleDateString("pt-BR")}</p>
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <p><strong>Valor transferido</strong></p>
+                        <p class="card-text">R$ ${Number(t.amount)
+                            .toFixed(2)
+                            .replace(".", ",")}</p>
+                        <p><strong>Data: </strong> ${new Date(
+                            t.created_at
+                        ).toLocaleDateString("pt-BR")}</p>
+                    </div>
                 </div>
             `
                 )

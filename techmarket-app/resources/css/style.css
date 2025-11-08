@@ -102,27 +102,15 @@ button {
 
 .transactions {
     width: 100%;
-    max-width: 850px;
+    max-width: 950px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1em;
     font-size: 1.25em;
 }
 
-.transaction-card {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    margin: 0 auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    gap: 1em;
-    padding: 1em;
-    margin-bottom: 1em;
-}
 
 footer {
     background-color: #333;
@@ -131,4 +119,35 @@ footer {
     padding: 10px;
     width: 100%;
     bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 8px;
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .nav-bar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-bar a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
 }
